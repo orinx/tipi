@@ -11,15 +11,18 @@ $base =  "http://".$_SERVER['SERVER_ADDR'].substr($_SERVER['PHP_SELF'],0,-8);
 $size_limit = 1024*1024;
 
 //keep hacker & cracker away ?
-if(empty($_FILES)){ die("go away!"); }
+if(empty($_FILES)){ die("an apple a day keeps the doctor away"); }
+
+//target folder address
+$targetFolder = "./file/";
 
 $index = 0;
 echo "{";
 foreach($_FILES as $file){
- // echo print_r($file)."</br>";
+  echo '"file'.$index.'": {';
   if($file['size'] > $size_limit){
     //image is too large
-    die('{status: "toolarge"}');
+    echo '"status": "toolarge"';
   }else{
 
     if (($file["type"] == "image/gif")
@@ -37,14 +40,17 @@ foreach($_FILES as $file){
           $type = "png";
 
           $uid_name = uniqid();
-          move_uploaded_file($file["tmp_name"], $uid_name.".".$type);
-          echo $index;
+          move_uploaded_file($file["tmp_name"], $targetFolder.$uid_name.".".$type);
+          echo '"status":"success", "id":"'.$uid_name.'"';
         }
       }else{
       //mine type error
-      die('{status: "mineerr"}');
+      echo '"status": "mineerr"';
     }
   }
+  $index++;
+  echo "},";
 }
+echo '"filelen": "'.$index.'"';
 echo "}";
 ?>
