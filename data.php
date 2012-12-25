@@ -1,3 +1,4 @@
 <?php
-  #Hello World :)
+#Hello World :)
+print_r($_FILES);
 ?>

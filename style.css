@@ -1,13 +1,49 @@
-body { /*background-color: #E5E6E6;*/
-  background-color: #fff;
-  background-image:
-  linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
-  linear-gradient(#eee .1em, transparent .1em);
-  background-size: 100% 1.2em;
-}
+body { background-color: #E5E6E6; }
+a {text-decoration:none;}
 #logo { color: #EE82EE; font-family: 'Finger Paint', cursive; font-size: 150px; text-align: center;}
 #panel { text-align:center; font-family: 'Finger Paint', cursive;}
 #panel a {color: #660198}
 #panel a:hover{color:#BF3EFF}
-#therock { text-align:center; text-align:center; font-family: 'Finger Paint', cursive;}
-a {text-decoration:none;}
+#holder {
+  background-color: #FFF;
+  text-align:center;
+  font-family: 'Finger Paint', cursive;
+  transition: background-color 1s, height 1s, box-shadow 1s, -moz-box-shadow 1s, -webkit-box-shadow 1s;
+  -moz-transition: background-color 1s, height 1s, -moz-box-shadow 1s;
+  -webkit-transition: background-color 1s, height 1s, -webkit-box-shadow 1s;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 200px;
+  vertical-align:middle;
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  box-shadow: 0 0 8px 8px #FFF;
+  -moz-box-shadow: 0 0 8px 8px #FFF;
+  -webkit-box-shadow: 0 0 8px 8px #FFF;
+}
+#holder.extend {
+  height: 400px;
+}
+#holder.dragin {
+  background-color: #a0ffe5;
+  box-shadow: 0 0 8px 8px #a0ffe5;
+  -moz-box-shadow: 0 0 8px 8px #a0ffe5;
+  -webkit-box-shadow: 0 0 8px 8px #a0ffe5;
+}
+
+#draghere {
+  line-height: 200px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#draghere.hide { display:none;}
+#uploadprogress.hide { display: none;}
+#uploadprogress { width: 40%; }
+#cnt { text-align:center; margin-left: auto; margin-right: auto; margin-top: -20px;}
+#holder img { margin left: 30px;}
