@@ -57,7 +57,7 @@ function previewfile(file) {
 function readfiles(files) {
     var formData = tests.formdata ? new FormData() : null;
     for (var i = 0; i < files.length; i++) {
-      if (tests.formdata) formData.append('file', files[i]);
+      if (tests.formdata) formData.append('file'+i, files[i]);
       previewfile(files[i]);
     }
 
