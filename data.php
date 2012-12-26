@@ -7,8 +7,8 @@ error_reporting(0);
 // Example http://rasengan.im/space/
 $base =  "http://".$_SERVER['SERVER_ADDR'].substr($_SERVER['PHP_SELF'],0,-8);
 
-// Maxium File Size (default 1MB)
-$size_limit = 1024*1024;
+// Maxium File Size (default 2MB)
+$size_limit = 2097152;
 
 //keep hacker & cracker away ?
 if(empty($_FILES)){ die("an apple a day keeps the doctor away"); }
