@@ -3,6 +3,9 @@
 <head>
   <meta charset=utf-8>
   <title>TiPi - Tiny Picture Uploader </title>
+  <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
   <script type="text/javascript" src="./main.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Finger+Paint' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="./style.css">
@@ -15,6 +18,7 @@
   <br />
   <div id="holder">
     <div id="draghere"> drag & drop to upload your tiny picture !</div>
+    <input type="file" id="fileElem" multiple accept="image/*" style="display:none"  onchange="readfiles(this.files)">
   </div>
   <div id="cnt">
     <progress id="uploadprogress" min="0" max="100" value="0" class="hide">0</progress>

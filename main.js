@@ -17,14 +17,12 @@ window.onload = function(){
   progress = document.getElementById('uploadprogress'),
   fileupload = document.getElementById('upload');
   holder.addEventListener("dragexit", dragExit, false);
+  document.getElementById('draghere').onmouseover = function() { this.innerHTML = "click me to upload your tiny picture ! "; }
+  document.getElementById('draghere').onmouseout = function() { this.innerHTML = " drag & drop to upload your tiny picture !"; }
     if (tests.dnd) {
-      holder.ondragover = function () { this.className = 'dragin'; return false; };
-      holder.ondragend = function () { this.className = ''; return false; };
-      holder.ondrop = function (e) {
-        this.className = '';
-        document.getElementById('draghere').className = 'hide';
-        holder.className = 'extend';
-        progress.className='';
+        holder.ondragover = function () { this.className = 'dragin'; return false; };
+        holder.ondragend = function () { this.className = ''; return false; };
+        holder.ondrop = function (e) {
         e.preventDefault();
         readfiles(e.dataTransfer.files);
       }
@@ -34,6 +32,14 @@ window.onload = function(){
         readfiles(this.files);
       };
     }
+   var fileSelect = document.getElementById("draghere"),
+    fileElem = document.getElementById("fileElem");
+   fileSelect.addEventListener("click", function (e) {
+      if (fileElem) {
+          fileElem.click();
+        }
+      e.preventDefault(); // prevent navigation to "#"
+    }, false);
 }
 
 function previewfile(file) {
@@ -55,6 +61,11 @@ function previewfile(file) {
 }
 
 function readfiles(files) {
+    holder.className = '';
+    document.getElementById('draghere').className = 'hide';
+    holder.className = 'extend';
+    progress.className='';
+
     var formData = tests.formdata ? new FormData() : null;
     for (var i = 0; i < files.length; i++) {
       if (tests.formdata) formData.append('file'+i, files[i]);
@@ -67,6 +78,8 @@ function readfiles(files) {
       xhr.open('POST', './data.php');
       xhr.onload = function() {
         progress.value = progress.innerHTML = 100;
+        var result = JSON.parse(xhr.responseText);
+        console.log(result);
       };
 
       if (tests.progress) {
