@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+error_reporting( 0 );
 
 //configs
 
@@ -14,7 +14,7 @@ $size_limit = 2097152;
 $targetFolder = "./file/";
 
 //allow filetype, please use lowercase
-$allowFileType = [ "jpg", "png", "gif", "psd", "orinx"];
+$allowFileType = [ "jpg", "png", "gif", "psd", "orinx", "essencious"];
 
 //keep hacker & cracker away ?
 if( empty( $_FILES ) ){ die( "an apple a day keeps the doctor away" ); }
@@ -31,8 +31,10 @@ foreach( $_FILES as $file ){
   if( $file[ 'size' ] > $size_limit ){
 
     echo '"status": "toolarge"';
+
   }else{
 
+    //get file extensions
     $fnSp = split( '[.]', $file[ 'name' ] );
     $fileType = strtolower( $fnSp[ count( $fnSp ) -1 ] );
 
