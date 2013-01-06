@@ -1,17 +1,16 @@
 <?php
 error_reporting( 0 );
-
 //configs
 
 //if you wanna to custom your url, you can change it like below
 // Example http://rasengan.im/space/
-$base =  "http://" . $_SERVER[ 'SERVER_ADDR' ] . substr( $_SERVER[ 'PHP_SELF' ] , 0 , -8 );
+$base =  "http://" . $_SERVER[ 'HTTP_HOST' ] . substr( $_SERVER[ 'PHP_SELF' ] , 0 , -8 );
 
 // Maxium File Size (default 2MB)
 $size_limit = 2097152;
 
 //target folder address
-$targetFolder = "./file/";
+$targetFolder = "file/";
 
 //allow filetype, please use lowercase
 $allowFileType = [ "jpg", "png", "gif", "psd", "orinx", "essencious"];
@@ -46,7 +45,7 @@ foreach( $_FILES as $file ){
 
         $uid_name = uniqid();
         move_uploaded_file( $file[ "tmp_name" ], $targetFolder . $uid_name . "." . $aft );
-        echo '"status":"success", "link":"' . $base . $uid_name . '.' . $aft . '"';
+        echo '"status":"success", "link":"' . $base . $targetFolder . $uid_name . '.' . $aft . '"';
         $pass = true;
         break;
 
