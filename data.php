@@ -27,7 +27,7 @@ foreach( $_FILES as $file ){
   echo '"file'.$index.'": {';
 
   //check image size
-  if( $file[ 'size' ] > $size_limit ){
+  if( $file[ 'size' ] > $size_limit  || $file[ 'size' ] == 0 ){
 
     echo '"status": "toolarge"';
 
